@@ -1,17 +1,17 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "christophrumpel/missing_livewire_assertions",
+    "description": "This package adds missing livewire test assertions.",
     "keywords": [
-        ":vendor_name",
+        "christophrumpel",
         "laravel",
-        "package_slug"
+        "missing_livewire_assertions"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/christophrumpel/missing_livewire_assertions",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Christoph Rumpel",
+            "email": "christoph@christoph-rumpel.com",
             "role": "Developer"
         }
     ],
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Christophrumpel\\MissingLivewireAssertions\\": "src",
+            "Christophrumpel\\MissingLivewireAssertions\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Christophrumpel\\MissingLivewireAssertions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Christophrumpel\\MissingLivewireAssertions\\MissingLivewireAssertionsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "MissingLivewireAssertions": "Christophrumpel\\MissingLivewireAssertions\\MissingLivewireAssertionsFacade"
             }
         }
     },

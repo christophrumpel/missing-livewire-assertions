@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Christophrumpel\MissingLivewireAssertions;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use Christophrumpel\MissingLivewireAssertions\Commands\MissingLivewireAssertionsCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class MissingLivewireAssertionsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('missing_livewire_assertions')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_missing_livewire_assertions_table')
+            ->hasCommand(MissingLivewireAssertionsCommand::class);
     }
 }
