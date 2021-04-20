@@ -1,7 +1,7 @@
 # Changelog
 
-All notable changes to `missing-livewire-assertions` will be documented in this file.
+All notable changes to `Missing Livewire Assertions` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+## 0.1.0 - 2021-04-20
 
-- initial release
+- initial WIP release

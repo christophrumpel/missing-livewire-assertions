@@ -1,59 +1,66 @@
 # This package adds missing livewire test assertions.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/christophrumpel/missing_livewire_assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing_livewire_assertions)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/run-tests?label=tests)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3Arun-tests+branch%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/run-tests?label=tests)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3Arun-tests+branch%3Aproduction)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Aproduction)
 [![Total Downloads](https://img.shields.io/packagist/dt/christophrumpel/missing_livewire_assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing_livewire_assertions)
 
-[](delete) 1) manually replace `Christoph Rumpel, christophrumpel, auhor@domain.com, christophrumpel, christophrumpel, Vendor Name, missing-livewire-assertions, missing_livewire_assertions, missing_livewire_assertions, MissingLivewireAssertions, This package adds missing livewire test assertions.` with their correct values
-[](delete) in `CHANGELOG.md, LICENSE.md, README.md, ExampleTest.php, ModelFactory.php, MissingLivewireAssertions.php, MissingLivewireAssertionsCommand.php, MissingLivewireAssertionsFacade.php, MissingLivewireAssertionsServiceProvider.php, TestCase.php, composer.json, create_missing_livewire_assertions_table.php.stub`
-[](delete) and delete `configure-missing_livewire_assertions.sh`
 
-[](delete) 2) You can also run `./configure-missing_livewire_assertions.sh` to do this automatically.
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/package-missing_livewire_assertions-laravel.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/package-missing_livewire_assertions-laravel)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package adds some nice new Livewire assertions which I was missing while testing my applications using Livewire.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require christophrumpel/missing_livewire_assertions
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider" --tag="missing_livewire_assertions-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider" --tag="missing_livewire_assertions-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
+composer require christophrumpel/missing-livewire-assertions
 ```
 
 ## Usage
 
+The new assertions get added automatically, so you can use it immediately.
+
+### Check if a Livewire property is wired to an HTML field
+
 ```php
-$missing_livewire_assertions = new Christophrumpel\MissingLivewireAssertions();
-echo $missing_livewire_assertions->echoPhrase('Hello, Spatie!');
+Livewire::test(FeedbackForm::class)
+    ->assertPropertyWired('email');
 ```
+
+### Check if a Livewire method is wired to an HTML field
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWired('submit');
+```
+
+### Check if a Livewire component contains another Livewire component
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertContainsLivewireComponent(CategoryList::class);
+```
+
+You can use the component tag name as well:
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertContainsLivewireComponent('category-list');
+```
+
+### Check if a Livewire component contains a Blade component
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertContainsBladeComponent(Button::class);
+```
+
+You can use the component tag name as well:
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertContainsBladeComponent('button');
+```
+
+
 
 ## Testing
 
