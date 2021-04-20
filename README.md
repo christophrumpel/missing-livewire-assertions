@@ -1,9 +1,9 @@
 # This Package Adds Missing Livewire Test Assertions
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/christophrumpel/missing_livewire_assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing_livewire_assertions)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/run-tests?label=tests)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3Arun-tests+branch%3Aproduction)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Aproduction)
-[![Total Downloads](https://img.shields.io/packagist/dt/christophrumpel/missing_livewire_assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing_livewire_assertions)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/christophrumpel/missing-livewire-assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing-livewire-assertions)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing-livewire-assertions/run-tests?label=tests)](https://github.com/christophrumpel/missing-livewire-assertions/actions?query=workflow%3Arun-tests+branch%3Aproduction)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing-livewire-assertions/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christophrumpel/missing-livewire-assertions/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Aproduction)
+[![Total Downloads](https://img.shields.io/packagist/dt/christophrumpel/missing-livewire-assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing-livewire-assertions)
 
 This package adds some nice new Livewire assertions which I was missing while testing my applications using Livewire.
 

@@ -7,7 +7,7 @@
         "livewire",
         "assertions"
     ],
-    "homepage": "https://github.com/christophrumpel/missing_livewire_assertions",
+    "homepage": "https://github.com/christophrumpel/missing-livewire-assertions",
     "license": "MIT",
     "authors": [
         {

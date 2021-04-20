@@ -13,7 +13,7 @@ class MissingLivewireAssertionsServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('missing_livewire_assertions')
+            ->name('missing-livewire-assertions')
             ->hasViews();
     }
 

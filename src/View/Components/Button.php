@@ -9,6 +9,6 @@ class Button extends Component
 {
     public function render(): View
     {
-        return view('missing_livewire_assertions::blade-test-component');
+        return view('missing-livewire-assertions::blade-test-component');
     }
 }

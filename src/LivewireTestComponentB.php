@@ -8,6 +8,6 @@ class LivewireTestComponentB extends Component
 {
     public function render()
     {
-        return view('missing_livewire_assertions::livewire-test-component-b');
+        return view('missing-livewire-assertions::livewire-test-component-b');
     }
 }
