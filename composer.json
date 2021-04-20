@@ -52,7 +52,7 @@
         "laravel": {
             "providers": [
                 "Christophrumpel\\MissingLivewireAssertions\\MissingLivewireAssertionsServiceProvider"
-            ],
+            ]
         }
     },
     "minimum-stability": "dev",
