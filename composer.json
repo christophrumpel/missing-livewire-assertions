@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Christophrumpel\\MissingLivewireAssertions\\": "src",
+            "Christophrumpel\\MissingLivewireAssertions\\": "src"
         }
     },
     "autoload-dev": {
