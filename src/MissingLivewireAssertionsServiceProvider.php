@@ -21,6 +21,5 @@ class MissingLivewireAssertionsServiceProvider extends PackageServiceProvider
     {
         TestableLivewire::mixin(new CustomLivewireAssertionsMixin());
         Blade::component('button', Button::class);
-
     }
 }

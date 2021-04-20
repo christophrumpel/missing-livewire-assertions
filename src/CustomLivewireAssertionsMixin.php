@@ -10,7 +10,7 @@ class CustomLivewireAssertionsMixin
 {
     public function assertPropertyWired()
     {
-        return function($property) {
+        return function ($property) {
             PHPUnit::assertStringContainsString(
                 'wire:model="'.$property.'"',
                 $this->stripOutInitialData($this->lastRenderedDom)
@@ -22,9 +22,11 @@ class CustomLivewireAssertionsMixin
 
     public function assertMethodWired()
     {
-        return function($method) {
-            PHPUnit::assertStringContainsString('wire:click="'.$method.'"',
-                $this->stripOutInitialData($this->lastRenderedDom));
+        return function ($method) {
+            PHPUnit::assertStringContainsString(
+                'wire:click="'.$method.'"',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
 
             return $this;
         };
@@ -33,7 +35,6 @@ class CustomLivewireAssertionsMixin
     public function assertContainsLivewireComponent(): Closure
     {
         return function (string $componentNeedleClass) {
-
             $componentNeedle = Str::of($componentNeedleClass)
                 ->classBasename()
                 ->kebab()
@@ -49,7 +50,6 @@ class CustomLivewireAssertionsMixin
     public function assertContainsBladeComponent(): Closure
     {
         return function (string $componentNeedleClass) {
-
             $componentNeedle = Str::of($componentNeedleClass)
                 ->classBasename()
                 ->kebab()
@@ -61,5 +61,4 @@ class CustomLivewireAssertionsMixin
             return $this;
         };
     }
-
 }
