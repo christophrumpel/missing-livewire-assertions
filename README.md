@@ -1,4 +1,4 @@
-# This package adds missing livewire test assertions.
+# This Package Adds Missing Livewire Test Assertions
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/christophrumpel/missing_livewire_assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing_livewire_assertions)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing_livewire_assertions/run-tests?label=tests)](https://github.com/christophrumpel/missing_livewire_assertions/actions?query=workflow%3Arun-tests+branch%3Aproduction)
