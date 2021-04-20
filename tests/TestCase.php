@@ -2,9 +2,9 @@
 
 namespace Christophrumpel\MissingLivewireAssertions\Tests;
 
+use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 
 class TestCase extends Orchestra
 {

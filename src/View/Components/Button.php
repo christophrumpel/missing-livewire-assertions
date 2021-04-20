@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 
 class Button extends Component
 {
-
     public function render(): View
     {
         return view('missing_livewire_assertions::blade-test-component');

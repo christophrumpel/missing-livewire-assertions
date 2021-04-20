@@ -2,7 +2,6 @@
 
 namespace Christophrumpel\MissingLivewireAssertions\Tests;
 
-
 use Christophrumpel\MissingLivewireAssertions\LivewireTestComponentA;
 use Christophrumpel\MissingLivewireAssertions\LivewireTestComponentB;
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
@@ -16,7 +15,7 @@ class AssertionsTest extends TestCase
     {
         return [
             LivewireServiceProvider::class,
-            MissingLivewireAssertionsServiceProvider::class
+            MissingLivewireAssertionsServiceProvider::class,
         ];
     }
 
@@ -66,5 +65,4 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertContainsBladeComponent('button');
     }
-
 }
