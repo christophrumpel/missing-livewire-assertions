@@ -4,7 +4,8 @@
     "keywords": [
         "christophrumpel",
         "laravel",
-        "missing_livewire_assertions"
+        "livewire",
+        "assertions"
     ],
     "homepage": "https://github.com/christophrumpel/missing_livewire_assertions",
     "license": "MIT",
@@ -32,7 +33,6 @@
     "autoload": {
         "psr-4": {
             "Christophrumpel\\MissingLivewireAssertions\\": "src",
-            "Christophrumpel\\MissingLivewireAssertions\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
@@ -53,9 +53,6 @@
             "providers": [
                 "Christophrumpel\\MissingLivewireAssertions\\MissingLivewireAssertionsServiceProvider"
             ],
-            "aliases": {
-                "MissingLivewireAssertions": "Christophrumpel\\MissingLivewireAssertions\\MissingLivewireAssertionsFacade"
-            }
         }
     },
     "minimum-stability": "dev",
