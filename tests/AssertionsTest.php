@@ -2,10 +2,10 @@
 
 namespace Christophrumpel\MissingLivewireAssertions\Tests;
 
-use Christophrumpel\MissingLivewireAssertions\LivewireTestComponentA;
-use Christophrumpel\MissingLivewireAssertions\LivewireTestComponentB;
+use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentA;
+use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentB;
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
-use Christophrumpel\MissingLivewireAssertions\View\Components\Button;
+use Christophrumpel\MissingLivewireAssertions\Tests\View\Components\Button;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 
@@ -17,11 +17,6 @@ class AssertionsTest extends TestCase
             LivewireServiceProvider::class,
             MissingLivewireAssertionsServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
     }
 
     /** @test * */
