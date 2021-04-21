@@ -2,9 +2,9 @@
 
 namespace Christophrumpel\MissingLivewireAssertions\Tests;
 
+use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentA;
 use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentB;
-use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Christophrumpel\MissingLivewireAssertions\Tests\View\Components\Button;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;

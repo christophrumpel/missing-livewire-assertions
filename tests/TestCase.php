@@ -3,11 +3,9 @@
 namespace Christophrumpel\MissingLivewireAssertions\Tests;
 
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Christophrumpel\MissingLivewireAssertions\Tests\View\Components\Button;
 
 class TestCase extends Orchestra
 {
