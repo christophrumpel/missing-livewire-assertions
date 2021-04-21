@@ -8,9 +8,9 @@ use PHPUnit\Framework\Assert as PHPUnit;
 
 class CustomLivewireAssertionsMixin
 {
-    public function assertPropertyWired()
+    public function assertPropertyWired(): Closure
     {
-        return function ($property) {
+        return function (string $property) {
             PHPUnit::assertStringContainsString(
                 'wire:model="'.$property.'"',
                 $this->stripOutInitialData($this->lastRenderedDom)
@@ -20,9 +20,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
-    public function assertMethodWired()
+    public function assertMethodWired(): Closure
     {
-        return function ($method) {
+        return function (string $method) {
             PHPUnit::assertStringContainsString(
                 'wire:click="'.$method.'"',
                 $this->stripOutInitialData($this->lastRenderedDom)
