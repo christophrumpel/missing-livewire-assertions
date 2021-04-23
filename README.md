@@ -61,6 +61,12 @@ Livewire::test(FeedbackForm::class)
     ->assertContainsBladeComponent('button');
 ```
 
+### Check to see if a string comes before another string
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertSeeBefore('first string', 'second string');
+```
+
 
 
 ## Testing
