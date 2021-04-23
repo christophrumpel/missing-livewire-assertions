@@ -65,7 +65,6 @@ class AssertionsTest extends TestCase
     public function it_checks_if_it_sees_string_before_other_string(): void
     {
         Livewire::test(LivewireTestComponentA::class)
-            ->as
             ->assertSeeBefore('First value', 'Second value');
     }
 }
