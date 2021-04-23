@@ -65,4 +65,11 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertContainsBladeComponent('button');
     }
+
+    /** @test * */
+    public function it_checks_if_it_sees_string_before_other_string(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertSeeBefore('First value', 'Second value');
+    }
 }

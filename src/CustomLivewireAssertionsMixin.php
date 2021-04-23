@@ -61,4 +61,17 @@ class CustomLivewireAssertionsMixin
             return $this;
         };
     }
+
+    public function assertSeeBefore(): Closure
+    {
+        return function ($valueBefore, $valueAfter) {
+            $html = $this->stripOutInitialData($this->lastRenderedDom);
+            PHPUnit::assertNotFalse($valueBeforePosition = mb_strpos($html, $valueBefore), "Value: $valueBefore not given in haystack.");
+            PHPUnit::assertNotFalse($valueAfterPosition = mb_strpos($html, $valueAfter), "Value: $valueAfter not given in haystack.");
+
+            PHPUnit::assertTrue($valueBeforePosition < $valueAfterPosition, "$valueBefore does occur before $valueAfter.");
+
+            return $this;
+        };
+    }
 }
