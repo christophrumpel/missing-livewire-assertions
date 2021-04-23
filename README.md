@@ -7,7 +7,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christophrumpel/missing-livewire-assertions/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christophrumpel/missing-livewire-assertions/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Aproduction)
 [![Total Downloads](https://img.shields.io/packagist/dt/christophrumpel/missing-livewire-assertions.svg?style=flat-square)](https://packagist.org/packages/christophrumpel/missing-livewire-assertions)
 
-This package adds some nice new Livewire assertions which I was missing while testing my applications using Livewire.
+This package adds some nice new Livewire assertions which I was missing while testing my applications using Livewire. If you want to know more about WHY I needed them, check out my [blog article](https://christoph-rumpel.com/2021/4/how-I-test-livewire-components).
 
 ## Installation
 
