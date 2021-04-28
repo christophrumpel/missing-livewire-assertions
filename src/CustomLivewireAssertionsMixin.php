@@ -15,7 +15,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $property) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:model(\.(lazy|defer))*="'.$property.'"/',
+                '/wire:model(\.(defer|(lazy|debounce)(\.\d+?(ms|s)|)))*="'.$property.'"/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
