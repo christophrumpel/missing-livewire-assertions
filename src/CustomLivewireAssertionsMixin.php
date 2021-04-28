@@ -14,8 +14,8 @@ class CustomLivewireAssertionsMixin
     public function assertPropertyWired(): Closure
     {
         return function (string $property) {
-            PHPUnit::assertStringContainsString(
-                'wire:model="'.$property.'"',
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:model(\.(lazy|defer))*="'.$property.'"/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
