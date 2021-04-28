@@ -11,7 +11,7 @@ use Livewire\LivewireServiceProvider;
 
 class AssertionsTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LivewireServiceProvider::class,
