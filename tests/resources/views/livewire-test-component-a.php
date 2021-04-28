@@ -4,7 +4,7 @@
     <input type="text" wire:model.defer="defer" />
     <input type="text" wire:model.debounce="debounce" />
     <input type="text" wire:model.lazy.200s="lazy-with-duration" />
-    <input type="text" wire:model.debounce.500ms="defer-with-duration" />
+    <input type="text" wire:model.debounce.500ms="debounce-with-duration" />
     <x-button wire:click="submit" />
 
     <p>First value</p>

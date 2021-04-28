@@ -26,8 +26,9 @@ class AssertionsTest extends TestCase
             ->assertPropertyWired('user')
             ->assertPropertyWired('lazy')
             ->assertPropertyWired('defer')
+            ->assertPropertyWired('debounce')
             ->assertPropertyWired('lazy-with-duration')
-            ->assertPropertyWired('defer-with-duration');
+            ->assertPropertyWired('debounce-with-duration');
     }
 
     /** @test * */
