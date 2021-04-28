@@ -28,6 +28,8 @@ Livewire::test(FeedbackForm::class)
     ->assertPropertyWired('email');
 ```
 
+It looks for a string like `wire:model="email"` in your components's view file. It also detects variations like `wire:model.defer="email"` or `wire:model.lazy="email"`.
+
 ### Check if a Livewire method is wired to an HTML field
 
 ```php
