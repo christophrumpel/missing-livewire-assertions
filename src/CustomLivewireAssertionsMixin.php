@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Assert as PHPUnit;
 
+/**
+ * @mixin \Livewire\Testing\TestableLivewire
+ */
 class CustomLivewireAssertionsMixin
 {
     public function assertPropertyWired(): Closure
