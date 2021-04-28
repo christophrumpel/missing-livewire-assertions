@@ -11,7 +11,7 @@ use Livewire\LivewireServiceProvider;
 
 class AssertionsTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LivewireServiceProvider::class,
@@ -23,7 +23,9 @@ class AssertionsTest extends TestCase
     public function it_checks_if_livewire_property_is_wired_to_a_field(): void
     {
         Livewire::test(LivewireTestComponentA::class)
-            ->assertPropertyWired('user');
+            ->assertPropertyWired('user')
+            ->assertPropertyWired('lazy')
+            ->assertPropertyWired('defer');
     }
 
     /** @test * */

@@ -6,13 +6,16 @@ use Closure;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Assert as PHPUnit;
 
+/**
+ * @mixin \Livewire\Testing\TestableLivewire
+ */
 class CustomLivewireAssertionsMixin
 {
     public function assertPropertyWired(): Closure
     {
         return function (string $property) {
-            PHPUnit::assertStringContainsString(
-                'wire:model="'.$property.'"',
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:model(\.(lazy|defer))*="'.$property.'"/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
