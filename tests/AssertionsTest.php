@@ -25,7 +25,9 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertPropertyWired('user')
             ->assertPropertyWired('lazy')
-            ->assertPropertyWired('defer');
+            ->assertPropertyWired('defer')
+            ->assertPropertyWired('lazy-with-duration')
+            ->assertPropertyWired('defer-with-duration');
     }
 
     /** @test * */
