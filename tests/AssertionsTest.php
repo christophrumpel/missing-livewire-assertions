@@ -35,6 +35,7 @@ class AssertionsTest extends TestCase
     public function it_checks_if_livewire_method_is_wired_to_a_field(): void
     {
         Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWired('prevent')
             ->assertMethodWired('submit');
     }
 

@@ -26,8 +26,8 @@ class CustomLivewireAssertionsMixin
     public function assertMethodWired(): Closure
     {
         return function (string $method) {
-            PHPUnit::assertStringContainsString(
-                'wire:click="'.$method.'"',
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:click(\.(prevent))*="'.$method.'"/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
