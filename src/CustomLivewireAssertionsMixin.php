@@ -40,11 +40,14 @@ class CustomLivewireAssertionsMixin
         return function (string $componentNeedleClass) {
             $componentNeedle = Str::of($componentNeedleClass)
                 ->classBasename()
-                ->kebab()
-                ->prepend('<livewire:');
+                ->kebab();
 
             $componentHaystackView = file_get_contents($this->lastRenderedView->getPath());
-            PHPUnit::assertStringContainsString($componentNeedle, $componentHaystackView);
+
+            PHPUnit::assertMatchesRegularExpression(
+                '/@livewire\(\''.$componentNeedle.'\'|<livewire\:'.$componentNeedle.'/',
+                $componentHaystackView
+            );
 
             return $this;
         };
