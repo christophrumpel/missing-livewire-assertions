@@ -37,6 +37,15 @@ Livewire::test(FeedbackForm::class)
     ->assertMethodWired('submit');
 ```
 
+### Check if a Livewire method is wired to an HTML form
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWiredToForm('upload');
+```
+
+It looks for a string like `wire:submit.prevent="upload"` in your components's view file.
+
 ### Check if a Livewire component contains another Livewire component
 ```php
 Livewire::test(FeedbackForm::class)
