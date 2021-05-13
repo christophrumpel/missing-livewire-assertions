@@ -12,4 +12,11 @@
     <p>Second value</p>
 
     <livewire:livewire-test-component-b />
+
+    <form wire:submit.prevent="upload">
+        <input type="file" wire:model="supportersUpload">
+
+
+        <button type="submit">Upload Participants</button>
+    </form>
 </div>

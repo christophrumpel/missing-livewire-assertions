@@ -35,6 +35,18 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    public function assertMethodWiredToForm(): Closure
+    {
+        return function (string $method) {
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:submit(\.(prevent))*="'.$method.'"/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
     public function assertContainsLivewireComponent(): Closure
     {
         return function (string $componentNeedleClass) {

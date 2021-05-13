@@ -40,6 +40,13 @@ class AssertionsTest extends TestCase
     }
 
     /** @test * */
+    public function it_checks_if_livewire_method_is_wired_to_a_form(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToForm('upload');
+    }
+
+    /** @test * */
     public function it_checks_if_livewire_component_contains_another_livewire_component_by_class_name(): void
     {
         Livewire::test(LivewireTestComponentA::class)
