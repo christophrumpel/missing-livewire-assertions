@@ -40,6 +40,14 @@ class AssertionsTest extends TestCase
     }
 
     /** @test * */
+    public function it_checks_if_livewire_method_is_wired_with_params_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWired('params')
+            ->assertMethodWired('preventParams');
+    }
+
+    /** @test * */
     public function it_checks_if_livewire_method_is_wired_to_a_form(): void
     {
         Livewire::test(LivewireTestComponentA::class)
