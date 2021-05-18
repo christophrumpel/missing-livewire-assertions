@@ -5,6 +5,7 @@ namespace Christophrumpel\MissingLivewireAssertions\Tests;
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentA;
 use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentB;
+use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentC;
 use Christophrumpel\MissingLivewireAssertions\Tests\View\Components\Button;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
@@ -79,5 +80,12 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentA::class)
             ->assertSeeBefore('First value', 'Second value');
+    }
+
+    /** @test * */
+    public function it_checks_if_it_sees_a_blade_directive(): void
+    {
+        Livewire::test(LivewireTestComponentC::class)
+            ->assertContainsLivewireComponent(LivewireTestComponentB::class);
     }
 }
