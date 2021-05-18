@@ -27,7 +27,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $method) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:click(\.(prevent))*="'.$method.'"/',
+                '/wire:click(\.(prevent))*="'.$method.'(\s*\(.+\)\s*)?\s*"/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 

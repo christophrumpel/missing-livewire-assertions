@@ -8,6 +8,9 @@
     <a href="/test" wire:click.prevent="prevent">test</a>
     <x-button wire:click="submit" />
 
+    <x-button wire:click="params({{$prop}}, 42)" />
+    <a href="/test" wire:click.prevent="preventParams({{$prop}}, 42)">test</a>
+
     <p>First value</p>
     <p>Second value</p>
 
