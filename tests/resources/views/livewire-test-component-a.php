@@ -5,9 +5,10 @@
     <input type="text" wire:model.debounce="debounce" />
     <input type="text" wire:model.lazy.200s="lazy-with-duration" />
     <input type="text" wire:model.debounce.500ms="debounce-with-duration" />
+    <input type="text" wire:model='singlequote' />
     <a href="/test" wire:click.prevent="prevent">test</a>
     <x-button wire:click="submit" />
-
+    <x-button wire:click='singlequote' />
     <x-button wire:click="params({{$prop}}, 42)" />
     <a href="/test" wire:click.prevent="preventParams({{$prop}}, 42)">test</a>
 
@@ -21,5 +22,8 @@
 
 
         <button type="submit">Upload Participants</button>
+    </form>
+
+    <form wire:submit.prevent='uploadSinglequote'>
     </form>
 </div>

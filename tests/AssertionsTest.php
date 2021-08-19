@@ -29,7 +29,8 @@ class AssertionsTest extends TestCase
             ->assertPropertyWired('defer')
             ->assertPropertyWired('debounce')
             ->assertPropertyWired('lazy-with-duration')
-            ->assertPropertyWired('debounce-with-duration');
+            ->assertPropertyWired('debounce-with-duration')
+            ->assertPropertyWired('singlequote');
     }
 
     /** @test * */
@@ -37,7 +38,8 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentA::class)
             ->assertMethodWired('prevent')
-            ->assertMethodWired('submit');
+            ->assertMethodWired('submit')
+            ->assertMethodWired('singlequote');
     }
 
     /** @test * */
@@ -52,7 +54,8 @@ class AssertionsTest extends TestCase
     public function it_checks_if_livewire_method_is_wired_to_a_form(): void
     {
         Livewire::test(LivewireTestComponentA::class)
-            ->assertMethodWiredToForm('upload');
+            ->assertMethodWiredToForm('upload')
+            ->assertMethodWiredToForm('uploadSinglequote');
     }
 
     /** @test * */
