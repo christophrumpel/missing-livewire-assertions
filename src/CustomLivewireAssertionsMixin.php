@@ -23,6 +23,27 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    public function assertPropertyEntangled(): Closure
+    {
+        return function (string $property) {
+            $propertyRe = '('
+                . preg_quote(htmlspecialchars("'" . $property . "'", ENT_QUOTES))
+                . '|'
+                . preg_quote(htmlspecialchars('"' . $property . '"', ENT_QUOTES))
+                . '|'
+                . preg_quote('"' . $property . '"')
+                . '|'
+                . preg_quote("'" . $property . "'")
+                . ')';
+            PHPUnit::assertMatchesRegularExpression(
+                '/(@|\$wire\.)entangle\('.$propertyRe.'\)/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
     public function assertMethodWired(): Closure
     {
         return function (string $method) {
