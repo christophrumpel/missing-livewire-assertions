@@ -15,7 +15,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $property) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:model(\.(defer|(lazy|debounce)(\.\d+?(ms|s)|)))*="'.$property.'"/',
+                '/wire:model(\.(defer|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
@@ -48,7 +48,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $method) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:click(\.(prevent))*="'.$method.'(\s*\(.+\)\s*)?\s*"/',
+                '/wire:click(\.(prevent))*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
@@ -60,7 +60,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $method) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:submit(\.(prevent))*="'.$method.'"/',
+                '/wire:submit(\.(prevent))*=(?<q>"|\')'.$method.'(\k\'q\')/',
                 $this->stripOutInitialData($this->lastRenderedDom)
             );
 
