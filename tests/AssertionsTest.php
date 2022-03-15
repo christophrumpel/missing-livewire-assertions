@@ -34,6 +34,16 @@ class AssertionsTest extends TestCase
     }
 
     /** @test * */
+    public function it_checks_if_livewire_property_is_entangled_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertPropertyEntangled('entangled-x-data-state-single-quote')
+            ->assertPropertyEntangled('entangled-x-data-state-double-quote')
+            ->assertPropertyEntangled('entangled-x-data-single-quote')
+            ->assertPropertyEntangled('entangled-x-data-single-quote');
+    }
+
+    /** @test * */
     public function it_checks_if_livewire_method_is_wired_to_a_field(): void
     {
         Livewire::test(LivewireTestComponentA::class)

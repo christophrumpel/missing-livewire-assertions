@@ -15,14 +15,28 @@
     <p>First value</p>
     <p>Second value</p>
 
-    <livewire:livewire-test-component-b />
+    <livewire:livewire-test-component-b/>
 
     <form wire:submit.prevent="upload">
         <input type="file" wire:model="supportersUpload">
 
 
         <button type="submit">Upload Participants</button>
+
+        <input x-data="textInputFormComponent({
+                        state: $wire.entangle('entangled-x-data-state-single-quote').defer,
+                    })" type="text" wire:ignore="" id="phone" maxlength="32"
+         >
+
+        <input x-data='textInputFormComponent({
+                        state: $wire.entangle("entangled-x-data-state-double-quote").defer,
+                    })' type="text" wire:ignore="" id="phone" maxlength="32"
+        >
     </form>
+
+
+    <div x-data="{ open: @entangle('entangled-x-data-single-quote') }"></div>
+    <div x-data='{ open: @entangle("entangled-x-data-double-quote") }'></div>
 
     <form wire:submit.prevent='uploadSinglequote'>
     </form>
