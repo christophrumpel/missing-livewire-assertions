@@ -198,4 +198,5 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentC::class)
             ->assertDoesNotContainLivewireComponent(NonExistantLivewireTestComponent::class);
-    }}
+    }
+}
