@@ -14,6 +14,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         php: [8.0, 8.1]
+        laravel: ["9.x"]
 
     name: P${{ matrix.php }} - ${{ matrix.os }}
 
@@ -35,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:9.0" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" --dev --no-interaction --no-update
           composer install --prefer-dist --no-interaction --no-suggest
 
       - name: Execute tests
