@@ -38,6 +38,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given property is entangled
+     */
     public function assertPropertyEntangled(): Closure
     {
         return function (string $property) {
@@ -83,6 +86,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given method is wired
+     */
     public function assertMethodWired(): Closure
     {
         return function (string $method) {
@@ -110,6 +116,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given method is wired to form
+     */
     public function assertMethodWiredToForm(): Closure
     {
         return function (string $method) {
@@ -137,6 +146,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given Livewire component is contained
+     */
     public function assertContainsLivewireComponent(): Closure
     {
         return function (string $componentNeedleClass) {
@@ -176,6 +188,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given Blade component is contained
+     */
     public function assertContainsBladeComponent(): Closure
     {
         return function (string $componentNeedleClass) {
@@ -209,6 +224,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given valueBefore string is before valueAfter string
+     */
     public function assertSeeBefore(): Closure
     {
         return function ($valueBefore, $valueAfter) {
