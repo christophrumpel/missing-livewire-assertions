@@ -24,7 +24,7 @@
     "require-dev": {
         "brianium/paratest": "^6.2",
         "livewire/livewire": "^2.4",
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^7.4",
         "phpunit/phpunit": "^9.3",
         "spatie/laravel-ray": "^1.9"
     },
