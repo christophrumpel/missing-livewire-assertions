@@ -19,7 +19,7 @@ composer require christophrumpel/missing-livewire-assertions
 
 ## Usage
 
-The new assertions get added automatically, so you can use it immediately.
+The new assertions get added automatically, so you can use them immediately.
 
 ### Check if a Livewire property is wired to an HTML field
 
@@ -28,7 +28,7 @@ Livewire::test(FeedbackForm::class)
     ->assertPropertyWired('email');
 ```
 
-It looks for a string like `wire:model="email"` in your components's view file. It also detects variations like `wire:model.defer="email"`, `wire:model.lazy="email"`, `wire:model.debounce="email"`, `wire:model.lazy.10s="email"` or `wire:model.debounce.500ms="email"`.
+It looks for a string like `wire:model="email"` in your component's view file. It also detects variations like `wire:model.defer="email"`, `wire:model.lazy="email"`, `wire:model.debounce="email"`, `wire:model.lazy.10s="email"` or `wire:model.debounce.500ms="email"`.
 
 ### Check if a Livewire method is wired to an HTML field
 
@@ -44,7 +44,7 @@ Livewire::test(FeedbackForm::class)
     ->assertMethodWiredToForm('upload');
 ```
 
-It looks for a string like `wire:submit.prevent="upload"` in your components's view file.
+It looks for a string like `wire:submit.prevent="upload"` in your component's view file.
 
 ### Check if a Livewire component contains another Livewire component
 ```php
@@ -77,8 +77,6 @@ Livewire::test(FeedbackForm::class)
 Livewire::test(FeedbackForm::class)
     ->assertSeeBefore('first string', 'second string');
 ```
-
-
 
 ## Testing
 
