@@ -17,9 +17,9 @@ jobs:
         laravel: ["10.x", "9.x"]
         include:
           - laravel: 9.x
-            testbench: ^7.4
+            testbench: ~7.4
           - laravel: 10.x
-            testbench: ^8.0
+            testbench: 8.x
         exclude:
           - laravel: 10.x
             php: 8.0
