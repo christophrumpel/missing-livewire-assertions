@@ -15,13 +15,16 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         php: [8.0, 8.1, 8.2]
         laravel: ["10.x", "9.x"]
-      include:
-        - laravel: 9.x
-          testbench: ^7.4
-        - laravel: 10.x
-          testbench: ^8.0
+        include:
+          - laravel: 9.x
+            testbench: 7.x
+          - laravel: 10.x
+            testbench: 8.x
+        exclude:
+          - laravel: 10.x
+            php: 8.0
 
-    name: P${{ matrix.php }} - ${{ matrix.os }}
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
