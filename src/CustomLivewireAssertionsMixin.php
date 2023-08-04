@@ -30,7 +30,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $property) {
             PHPUnit::assertDoesNotMatchRegularExpression(
-                '/wire:model(\.(live|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property . '(\k\'q\')/',
+                '/wire:model(\.(live|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
                 $this->html()
             );
 
