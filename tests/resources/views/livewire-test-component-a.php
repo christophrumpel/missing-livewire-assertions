@@ -1,7 +1,7 @@
 <div>
     <input type="text" wire:model="user" />
     <input type="text" wire:model.lazy="lazy" />
-    <input type="text" wire:model.defer="defer" />
+    <input type="text" wire:model.live="live" />
     <input type="text" wire:model.debounce="debounce" />
     <input type="text" wire:model.lazy.200s="lazy-with-duration" />
     <input type="text" wire:model.debounce.500ms="debounce-with-duration" />
@@ -24,12 +24,12 @@
         <button type="submit">Upload Participants</button>
 
         <input x-data="textInputFormComponent({
-                        state: $wire.entangle('entangled-x-data-state-single-quote').defer,
+                        state: $wire.entangle('entangled-x-data-state-single-quote').live,
                     })" type="text" wire:ignore="" id="phone" maxlength="32"
          >
 
         <input x-data='textInputFormComponent({
-                        state: $wire.entangle("entangled-x-data-state-double-quote").defer,
+                        state: $wire.entangle("entangled-x-data-state-double-quote").live,
                     })' type="text" wire:ignore="" id="phone" maxlength="32"
         >
     </form>
