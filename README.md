@@ -45,6 +45,29 @@ Livewire::test(FeedbackForm::class)
 
 It looks for a string like `wire:submit.prevent="upload"` in your component's view file.
 
+### Check if a Livewire method is wired to a specific javascript event
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWiredToEvent('setValue', 'change');
+```
+
+It looks for a string like `wire:change.debounce.150ms="setValue"` in your component's view file.
+
+You can also check for actions without any additional modifiers: 
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWiredToEventWithoutModifiers('reset', 'keyup');
+```
+
+This will match `wire:keyup="reset"`, but not `wire:keyup.escape="reset"`. You could match that with
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWiredToEventWithoutModifiers('reset', 'keyup.escape');
+```
+
 ### Check if a Livewire component contains another Livewire component
 ```php
 Livewire::test(FeedbackForm::class)

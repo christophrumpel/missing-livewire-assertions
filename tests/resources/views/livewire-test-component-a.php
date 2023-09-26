@@ -12,6 +12,21 @@
     <x-button wire:click="params({{$prop}}, 42)" />
     <a href="/test" wire:click.prevent="preventParams({{$prop}}, 42)">test</a>
 
+    <select wire:change="setSelector($event.target.value)">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+    </select>
+
+    <select wire:change.debounce.500ms="changeDebounce($event.target.value)">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+    </select>
+
+    <input wire:keyup="keyup" />
+    <input wire:keydown.page-down="keydown-page-down">
+
     <p>First value</p>
     <p>Second value</p>
 
