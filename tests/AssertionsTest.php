@@ -118,6 +118,91 @@ class AssertionsTest extends TestCase
     }
 
     /** @test * */
+    public function it_checks_if_livewire_method_is_wired_to_a_field_with_an_event(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEvent('prevent', 'click')
+            ->assertMethodWiredToEvent('submit', 'click')
+            ->assertMethodWiredToEvent('singlequote', 'click')
+            ->assertMethodWiredToEvent('keyup', 'keyup')
+            ->assertMethodWiredToEvent('keydown-page-down', 'keydown')
+            ->assertMethodWiredToEvent('keydown-page-down', 'keydown.page-down')
+            ->assertMethodWiredToEvent('changeDebounce', 'change')
+            ->assertMethodWiredToEvent('changeDebounce', 'change.debounce')
+            ->assertMethodWiredToEvent('changeDebounce', 'change.debounce.500ms');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_not_wired_to_a_field_with_an_event(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEvent('prevent_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('submit_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('singlequote_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('keyup', 'keydown')
+            ->assertMethodNotWiredToEvent('keyup_not_wired', 'keyup')
+            ->assertMethodNotWiredToEvent('changeDebounce', 'debounce')
+            ->assertMethodNotWiredToEvent('changeDebounce_not_wired', 'change');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_wired_with_params_to_a_field_with_an_event(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEvent('params', 'click')
+            ->assertMethodWiredToEvent('preventParams', 'click')
+            ->assertMethodWiredToEvent('setSelector', 'change');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_not_wired_with_params_to_a_field_with_an_event(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEvent('params_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('preventParams_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('setSelector_not_wired', 'change')
+            ->assertMethodNotWiredToEvent('setSelector', 'click');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_wired_to_a_field_with_an_event_without_modifiers(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEventWithoutModifiers('submit', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('singlequote', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('keyup', 'keyup')
+            ->assertMethodWiredToEventWithoutModifiers('keydown-page-down', 'keydown.page-down');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_not_wired_to_a_field_with_an_event_without_modifiers(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEventWithoutModifiers('prevent', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('prevent_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('submit_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('singlequote_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('keydown-page-down', 'keydown');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_wired_with_params_to_a_field_with_an_event_without_modifiers(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEventWithoutModifiers('params', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('preventParams', 'click.prevent')
+            ->assertMethodWiredToEventWithoutModifiers('setSelector', 'change');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_method_is_not_wired_with_params_to_a_field_with_an_event_without_modifiers(): void
+    {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEventWithoutModifiers('params_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('preventParams', 'click');
+    }
+
+    /** @test * */
     public function it_checks_if_livewire_component_contains_another_livewire_component_by_class_name(): void
     {
         Livewire::test(LivewireTestComponentA::class)

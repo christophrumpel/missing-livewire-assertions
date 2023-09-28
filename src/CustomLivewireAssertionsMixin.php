@@ -147,6 +147,66 @@ class CustomLivewireAssertionsMixin
     }
 
     /**
+     * Assert that the given method is wired to the specified event
+     */
+    public function assertMethodWiredToEvent(): Closure
+    {
+        return function (string $method, string $event) {
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:'.preg_quote($event, '/').'(\.[a-zA-Z0-9\-]+)*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
+    /**
+     * Assert that the given method is NOT wired to the specified event
+     */
+    public function assertMethodNotWiredToEvent(): Closure
+    {
+        return function (string $method, string $event) {
+            PHPUnit::assertDoesNotMatchRegularExpression(
+                '/wire:'.preg_quote($event, '/').'(\.[a-zA-Z0-9\-]+)*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
+        /**
+     * Assert that the given method is wired to the specified event
+     */
+    public function assertMethodWiredToEventWithoutModifiers(): Closure
+    {
+        return function (string $method, string $event) {
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:'.preg_quote($event, '/').'=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
+    /**
+     * Assert that the given method is NOT wired to the specified event
+     */
+    public function assertMethodNotWiredToEventWithoutModifiers(): Closure
+    {
+        return function (string $method, string $event) {
+            PHPUnit::assertDoesNotMatchRegularExpression(
+                '/wire:'.preg_quote($event, '/').'=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->stripOutInitialData($this->lastRenderedDom)
+            );
+
+            return $this;
+        };
+    }
+
+    /**
      * Assert that the given Livewire component is contained
      */
     public function assertContainsLivewireComponent(): Closure
