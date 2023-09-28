@@ -26,11 +26,12 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertPropertyWired('user')
             ->assertPropertyWired('lazy')
-            ->assertPropertyWired('defer')
+            ->assertPropertyWired('live')
             ->assertPropertyWired('debounce')
             ->assertPropertyWired('lazy-with-duration')
             ->assertPropertyWired('debounce-with-duration')
             ->assertPropertyWired('singlequote');
+        ;
     }
 
     /** @test * */
@@ -39,7 +40,7 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertPropertyNotWired('user_not_wired')
             ->assertPropertyNotWired('lazy_not_wired')
-            ->assertPropertyNotWired('defer_not_wired')
+            ->assertPropertyNotWired('live_not_wired')
             ->assertPropertyNotWired('debounce_not_wired')
             ->assertPropertyNotWired('lazy-with-duration_not_wired')
             ->assertPropertyNotWired('debounce-with-duration_not_wired')

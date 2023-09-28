@@ -15,8 +15,8 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $property) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:model(\.(defer|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                '/wire:model(\.(live|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
+                $this->html()
             );
 
             return $this;
@@ -30,8 +30,8 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $property) {
             PHPUnit::assertDoesNotMatchRegularExpression(
-                '/wire:model(\.(defer|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                '/wire:model(\.(live|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
+                $this->html()
             );
 
             return $this;
@@ -54,8 +54,8 @@ class CustomLivewireAssertionsMixin
                 . preg_quote("'" . $property . "'")
                 . ')';
             PHPUnit::assertMatchesRegularExpression(
-                '/(@|\$wire\.)entangle\('.$propertyRe.'\)/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                '/(.|\$wire\.)entangle\('.$propertyRe.'\)/',
+                $this->html()
             );
 
             return $this;
@@ -78,8 +78,8 @@ class CustomLivewireAssertionsMixin
                 . preg_quote("'" . $property . "'")
                 . ')';
             PHPUnit::assertDoesNotMatchRegularExpression(
-                '/(@|\$wire\.)entangle\('.$propertyRe.'\)/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                '/(.|\$wire\.)entangle\('.$propertyRe.'\)/',
+                $this->html()
             );
 
             return $this;
@@ -94,7 +94,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method) {
             PHPUnit::assertMatchesRegularExpression(
                 '/wire:click(\.(prevent))*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -109,7 +109,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method) {
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/wire:click(\.(prevent))*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -124,7 +124,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method) {
             PHPUnit::assertMatchesRegularExpression(
                 '/wire:submit(\.(prevent))*=(?<q>"|\')'.$method.'(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -139,7 +139,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method) {
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/wire:submit(\.(prevent))*=(?<q>"|\')'.$method.'(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -156,7 +156,7 @@ class CustomLivewireAssertionsMixin
                 ->classBasename()
                 ->kebab();
 
-            $componentHaystackView = file_get_contents($this->lastRenderedView->getPath());
+            $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
 
             PHPUnit::assertMatchesRegularExpression(
                 '/@livewire\(\''.$componentNeedle.'\'|<livewire\:'.$componentNeedle.'/',
@@ -177,7 +177,7 @@ class CustomLivewireAssertionsMixin
                 ->classBasename()
                 ->kebab();
 
-            $componentHaystackView = file_get_contents($this->lastRenderedView->getPath());
+            $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
 
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/@livewire\(\''.$componentNeedle.'\'|<livewire\:'.$componentNeedle.'/',
@@ -199,7 +199,7 @@ class CustomLivewireAssertionsMixin
                 ->kebab()
                 ->prepend('<x-');
 
-            $componentHaystackView = file_get_contents($this->lastRenderedView->getPath());
+            $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
             PHPUnit::assertStringContainsString($componentNeedle, $componentHaystackView);
 
             return $this;
@@ -217,7 +217,7 @@ class CustomLivewireAssertionsMixin
                 ->kebab()
                 ->prepend('<x-');
 
-            $componentHaystackView = file_get_contents($this->lastRenderedView->getPath());
+            $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
             PHPUnit::assertStringNotContainsString($componentNeedle, $componentHaystackView);
 
             return $this;
@@ -230,7 +230,7 @@ class CustomLivewireAssertionsMixin
     public function assertSeeBefore(): Closure
     {
         return function ($valueBefore, $valueAfter) {
-            $html = $this->stripOutInitialData($this->lastRenderedDom);
+            $html = $this->html();
             PHPUnit::assertNotFalse($valueBeforePosition = mb_strpos($html, $valueBefore), "Value: $valueBefore not given in haystack.");
             PHPUnit::assertNotFalse($valueAfterPosition = mb_strpos($html, $valueAfter), "Value: $valueAfter not given in haystack.");
 
@@ -246,7 +246,7 @@ class CustomLivewireAssertionsMixin
     public function assertDoNotSeeBefore(): Closure
     {
         return function ($valueBefore, $valueAfter) {
-            $html = $this->stripOutInitialData($this->lastRenderedDom);
+            $html = $this->html();
             PHPUnit::assertNotFalse($valueBeforePosition = mb_strpos($html, $valueBefore), "Value: $valueBefore not given in haystack.");
             PHPUnit::assertNotFalse($valueAfterPosition = mb_strpos($html, $valueAfter), "Value: $valueAfter not given in haystack.");
 

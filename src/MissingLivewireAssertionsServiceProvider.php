@@ -2,7 +2,7 @@
 
 namespace Christophrumpel\MissingLivewireAssertions;
 
-use Livewire\Testing\TestableLivewire;
+use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,6 +16,6 @@ class MissingLivewireAssertionsServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        TestableLivewire::mixin(new CustomLivewireAssertionsMixin());
+        Testable::mixin(new CustomLivewireAssertionsMixin());
     }
 }
