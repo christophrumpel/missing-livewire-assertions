@@ -176,7 +176,7 @@ class CustomLivewireAssertionsMixin
         };
     }
 
-        /**
+    /**
      * Assert that the given method is wired to the specified event
      */
     public function assertMethodWiredToEventWithoutModifiers(): Closure
