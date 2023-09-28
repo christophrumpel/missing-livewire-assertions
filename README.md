@@ -8,6 +8,8 @@
 
 This package adds some nice new Livewire assertions which I was missing while testing my applications using Livewire. If you want to know more about WHY I needed them, check out my [blog article](https://christoph-rumpel.com/2021/4/how-I-test-livewire-components).
 
+➡️ `Version 2.0` of this package only supports `Livewire 3`. Please use a lower version of this package for other Livewire versions.
+
 ## Installation
 
 You can install the package via composer:
