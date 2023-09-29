@@ -154,7 +154,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method, string $event) {
             PHPUnit::assertMatchesRegularExpression(
                 '/wire:'.preg_quote($event, '/').'(\.[a-zA-Z0-9\-]+)*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -169,7 +169,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method, string $event) {
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/wire:'.preg_quote($event, '/').'(\.[a-zA-Z0-9\-]+)*=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -184,7 +184,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method, string $event) {
             PHPUnit::assertMatchesRegularExpression(
                 '/wire:'.preg_quote($event, '/').'=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
@@ -199,7 +199,7 @@ class CustomLivewireAssertionsMixin
         return function (string $method, string $event) {
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/wire:'.preg_quote($event, '/').'=(?<q>"|\')'.$method.'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
-                $this->stripOutInitialData($this->lastRenderedDom)
+                $this->html()
             );
 
             return $this;
