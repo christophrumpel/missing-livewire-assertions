@@ -25,6 +25,7 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentA::class)
             ->assertPropertyWired('user')
+            ->assertPropertyWired('blur')
             ->assertPropertyWired('lazy')
             ->assertPropertyWired('live')
             ->assertPropertyWired('debounce')
@@ -39,6 +40,7 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentA::class)
             ->assertPropertyNotWired('user_not_wired')
+            ->assertPropertyNotWired('blur_not_wired')
             ->assertPropertyNotWired('lazy_not_wired')
             ->assertPropertyNotWired('live_not_wired')
             ->assertPropertyNotWired('debounce_not_wired')
