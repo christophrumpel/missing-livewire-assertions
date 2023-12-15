@@ -39,7 +39,7 @@ Livewire::test(FeedbackForm::class)
 ```
 It looks for a string like `wire:click="submit"` in your component's view file. 
 
-### Check is a Livewire magic action is wired to an HTML field
+### Check if a Livewire magic action is wired to an HTML field
 ```php
 Livewire::test(FeedbackForm::class)
     ->assertMethodWired('$toggle(\'sortAsc\')');
