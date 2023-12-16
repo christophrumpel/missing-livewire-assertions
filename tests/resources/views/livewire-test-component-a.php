@@ -12,6 +12,13 @@
     <x-button wire:click='singlequote' />
     <x-button wire:click="params({{$prop}}, 42)" />
     <a href="/test" wire:click.prevent="preventParams({{$prop}}, 42)">test</a>
+    <x-button wire:click="$refresh" />
+    <x-button wire:click="$toggle('sortAsc')" />
+    <x-button wire:click="$dispatch('post-created')" />
+    <x-button wire:click="search($event.target.value)" />
+    <x-button wire:click="$wire.$refresh()" />
+    <x-button wire:click="$parent.removePost({{ $post->id }})" />
+    <x-button wire:click="$set('query', '')" />
 
     <select wire:change="setSelector($event.target.value)">
         <option value="one">One</option>

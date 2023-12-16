@@ -75,7 +75,14 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertMethodWired('prevent')
             ->assertMethodWired('submit')
-            ->assertMethodWired('singlequote');
+            ->assertMethodWired('singlequote')
+            ->assertMethodWired('$refresh')
+            ->assertMethodWired('$toggle(\'sortAsc\')')
+            ->assertMethodWired('$dispatch(\'post-created\')')
+            ->assertMethodWired('search($event.target.value)')
+            ->assertMethodWired('$wire.$refresh()')
+            ->assertMethodWired('$parent.removePost({{ $post->id }})')
+            ->assertMethodWired('$set(\'query\', \'\')');
     }
 
     /** @test * */

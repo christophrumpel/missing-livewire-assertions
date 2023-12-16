@@ -37,6 +37,15 @@ It looks for a string like `wire:model="email"` in your component's view file. I
 Livewire::test(FeedbackForm::class)
     ->assertMethodWired('submit');
 ```
+It looks for a string like `wire:click="submit"` in your component's view file. 
+
+### Check if a Livewire magic action is wired to an HTML field
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWired('$toggle(\'sortAsc\')');
+```
+
+It looks for a string like `wire:click="$refresh"`, `wire:click="$toggle('sortAsc')`, `$dispatch('post-created')`, along with all other [magic actions](https://livewire.laravel.com/docs/actions#magic-actions). When testing for magic actions, you must escape single quotes like shown above.
 
 ### Check if a Livewire method is wired to an HTML form
 
