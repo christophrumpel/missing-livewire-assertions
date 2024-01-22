@@ -1,3 +1,3 @@
 <div>
-    @livewire('livewire-test-component-b')
+    @livewire('tests.components.livewire-test-component-b')
 </div>

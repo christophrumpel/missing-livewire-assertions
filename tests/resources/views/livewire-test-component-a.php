@@ -38,7 +38,7 @@
     <p>First value</p>
     <p>Second value</p>
 
-    <livewire:livewire-test-component-b/>
+    <livewire:tests.components.livewire-test-component-b/>
 
     <form wire:submit.prevent="upload">
         <input type="file" wire:model="supportersUpload">
