@@ -5,6 +5,7 @@ namespace Tests;
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
+use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
@@ -293,5 +294,21 @@ class AssertionsTest extends TestCase
     {
         Livewire::test(LivewireTestComponentC::class)
             ->assertDoesNotContainLivewireComponent(NonExistantLivewireTestComponent::class);
+    }
+
+    /** @test */
+    public function can_check_a_downloaded_file_contains()
+    {
+        Livewire::test(FileDownloadComponent::class)
+            ->call('streamDownload', 'download.txt')
+            ->assertFileDownloadedContains('alpine');
+    }
+
+    /** @test */
+    public function can_check_a_downloaded_file_does_not_contain()
+    {
+        Livewire::test(FileDownloadComponent::class)
+            ->call('streamDownload', 'download.txt')
+            ->assertFileDownloadedNotContains('vuejs');
     }
 }

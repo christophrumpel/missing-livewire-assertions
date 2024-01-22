@@ -317,4 +317,38 @@ class CustomLivewireAssertionsMixin
             return $this;
         };
     }
+
+    /**
+     * Assert that the stream download contains the given string
+     */
+    public function assertFileDownloadedContains()
+    {
+        return function ($content) {
+            $downloadedContent = data_get($this->effects, 'download.content');
+
+            PHPUnit::assertStringContainsString(
+                $content,
+                base64_decode($downloadedContent)
+            );
+
+            return $this;
+        };
+    }
+
+    /**
+     * Assert that the stream download NOT contains the given string
+     */
+    public function assertFileDownloadedNotContains()
+    {
+        return function ($content) {
+            $downloadedContent = data_get($this->effects, 'download.content');
+
+            PHPUnit::assertStringNotContainsString(
+                $content,
+                base64_decode($downloadedContent)
+            );
+
+            return $this;
+        };
+    }
 }
