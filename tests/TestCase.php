@@ -1,6 +1,6 @@
 <?php
 
-namespace Christophrumpel\MissingLivewireAssertions\Tests;
+namespace Tests;
 
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Christophrumpel\MissingLivewireAssertions\Tests\Components;
+namespace Tests\Components;
 
 use Livewire\Component;
 

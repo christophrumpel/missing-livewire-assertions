@@ -4,10 +4,12 @@ namespace Christophrumpel\MissingLivewireAssertions;
 
 use Closure;
 use Illuminate\Support\Str;
+use Livewire\Component;
+use Livewire\Mechanisms\ComponentRegistry;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 /**
- * @mixin \Livewire\Testing\TestableLivewire
+ * @mixin \Livewire\Features\SupportTesting\Testable
  */
 class CustomLivewireAssertionsMixin
 {
@@ -211,15 +213,15 @@ class CustomLivewireAssertionsMixin
      */
     public function assertContainsLivewireComponent(): Closure
     {
-        return function (string $componentNeedleClass) {
-            $componentNeedle = Str::of($componentNeedleClass)
-                ->classBasename()
-                ->kebab();
+        return function (string $component) {
+            if (is_subclass_of($component, Component::class)) {
+                $component = app(ComponentRegistry::class)->getName($component);
+            }
 
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
 
             PHPUnit::assertMatchesRegularExpression(
-                '/@livewire\(\''.$componentNeedle.'\'|<livewire\:'.$componentNeedle.'/',
+                '/@livewire\(\''.$component.'\'|<livewire\:'.$component.'/',
                 $componentHaystackView
             );
 
@@ -232,15 +234,15 @@ class CustomLivewireAssertionsMixin
      */
     public function assertDoesNotContainLivewireComponent(): Closure
     {
-        return function (string $componentNeedleClass) {
-            $componentNeedle = Str::of($componentNeedleClass)
-                ->classBasename()
-                ->kebab();
+        return function (string $component) {
+            if (is_subclass_of($component, Component::class)) {
+                $component = app(ComponentRegistry::class)->getName($component);
+            }
 
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
 
             PHPUnit::assertDoesNotMatchRegularExpression(
-                '/@livewire\(\''.$componentNeedle.'\'|<livewire\:'.$componentNeedle.'/',
+                '/@livewire\(\''.$component.'\'|<livewire\:'.$component.'/',
                 $componentHaystackView
             );
 
