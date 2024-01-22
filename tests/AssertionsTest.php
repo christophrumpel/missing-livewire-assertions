@@ -3,13 +3,13 @@
 namespace Tests;
 
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
+use Livewire\Livewire;
+use Livewire\LivewireServiceProvider;
 use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
 use Tests\View\Components\Button;
-use Livewire\Livewire;
-use Livewire\LivewireServiceProvider;
 
 class AssertionsTest extends TestCase
 {
