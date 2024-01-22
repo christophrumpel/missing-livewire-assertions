@@ -1,12 +1,12 @@
 <?php
 
-namespace Christophrumpel\MissingLivewireAssertions\Tests;
+namespace Tests;
 
 use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
-use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentA;
-use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentB;
-use Christophrumpel\MissingLivewireAssertions\Tests\Components\LivewireTestComponentC;
-use Christophrumpel\MissingLivewireAssertions\Tests\View\Components\Button;
+use Tests\Components\LivewireTestComponentA;
+use Tests\Components\LivewireTestComponentB;
+use Tests\Components\LivewireTestComponentC;
+use Tests\View\Components\Button;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 
@@ -229,7 +229,7 @@ class AssertionsTest extends TestCase
     public function it_checks_if_livewire_component_contains_another_livewire_component_by_component_name(): void
     {
         Livewire::test(LivewireTestComponentA::class)
-            ->assertContainsLivewireComponent('livewire-test-component-b');
+            ->assertContainsLivewireComponent('tests.components.livewire-test-component-b');
     }
 
     /** @test * */

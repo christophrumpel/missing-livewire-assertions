@@ -1,6 +1,6 @@
 <?php
 
-namespace Christophrumpel\MissingLivewireAssertions\Tests\View\Components;
+namespace Tests\View\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

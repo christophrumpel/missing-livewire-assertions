@@ -35,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Christophrumpel\\MissingLivewireAssertions\\Tests\\": "tests"
+            "Tests\\": "tests"
         }
     },
     "scripts": {
