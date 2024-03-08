@@ -45,6 +45,15 @@ Livewire::test(FeedbackForm::class)
     ->assertMethodWired('$toggle(\'sortAsc\')');
 ```
 
+### Check if a generic Livewire method is wired to an HTML field
+
+```php
+Livewire::test(FeedbackForm::class)
+    ->assertMethodWiredToAction('mouseenter', 'enter');
+```
+
+It looks for a string like `wire:mouseenter="enter"` in your component's view file. Also, note that it can also look for any events, like `wire:keydown` or `wire:custom-event`.
+
 It looks for a string like `wire:click="$refresh"`, `wire:click="$toggle('sortAsc')`, `$dispatch('post-created')`, along with all other [magic actions](https://livewire.laravel.com/docs/actions#magic-actions). When testing for magic actions, you must escape single quotes like shown above.
 
 ### Check if a Livewire method is wired to an HTML form
