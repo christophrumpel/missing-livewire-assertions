@@ -122,7 +122,19 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $methodName, string $action) {
             PHPUnit::assertMatchesRegularExpression(
-                '/wire:' . $methodName . '(\.(prevent))?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                '/wire:' . $methodName . '?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->html()
+            );
+
+            return $this;
+        };
+    }
+
+    public function assertMethodNotWiredToAction(): Closure
+    {
+        return function (string $methodName, string $action) {
+            PHPUnit::assertDoesNotMatchRegularExpression(
+                '/wire:' . $methodName . '?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
                 $this->html()
             );
 

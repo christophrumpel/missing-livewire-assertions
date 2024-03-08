@@ -134,10 +134,33 @@ class AssertionsTest extends TestCase
             ;
     }
 
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_not_wired_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodNotWiredToAction('change', 'change_not_wired')
+            ->assertMethodNotWiredToAction('keydown', 'keydown_not_wired')
+            ->assertMethodNotWiredToAction('keyup', 'keyup_not_wired')
+            ->assertMethodNotWiredToAction('mouseenter', 'mouseEnter_not_wired')
+            ->assertMethodNotWiredToAction('keydown.enter', 'keyDownEnter_not_wired')
+            ->assertMethodNotWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod_not_wired')
+            ->assertMethodNotWiredToAction('transitionend', 'transitionendMethod_not_wired')
+            ->assertMethodNotWiredToAction('custom-event', 'customEventMethod_not_wired')
+            ;
+    }
+
+    /** @test * */
     public function it_checks_if_a_generic_livewire_method_is_wired_with_params_to_a_field()
     {
         Livewire::test(LivewireTestComponentD::class)
             ->assertMethodWiredToAction('mouseenter', 'params');
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_not_wired_with_params_to_a_field()
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodNotWiredToAction('mouseenter', 'params_not_wired');
     }
 
     /** @test * */
