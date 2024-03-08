@@ -52,24 +52,6 @@ class AssertionsTest extends TestCase
     }
 
     /** @test * */
-    public function it_checks_if_livewire_is_wired_to_an_action(): void
-    {
-        Livewire::test(LivewireTestComponentD::class)
-            ->assertMethodWiredToAction('change', 'change')
-            ->assertMethodWiredToAction('keydown', 'keydown')
-            ->assertMethodWiredToAction('keyup', 'keyup')
-            ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
-            ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
-            ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
-            ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
-            ->assertMethodWiredToAction('custom-event', 'customEventMethod')
-            ->assertMethodWiredToAction('change', 'singlequote')
-            ->assertMethodWiredToAction('mouseenter', 'submit')
-            ->assertMethodWiredToAction('mouseenter', 'params')
-            ;
-    }
-
-    /** @test * */
     public function it_checks_if_livewire_property_is_entangled_to_a_field(): void
     {
         Livewire::test(LivewireTestComponentA::class)
@@ -128,6 +110,34 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertMethodNotWired('params_not_wired')
             ->assertMethodNotWired('preventParams_not_wired');
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_wired_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('change', 'change')
+            ->assertMethodWiredToAction('keydown', 'keydown')
+            ->assertMethodWiredToAction('keyup', 'keyup')
+            ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
+            ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
+            ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
+            ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
+            ->assertMethodWiredToAction('custom-event', 'customEventMethod')
+            ->assertMethodWiredToAction('change', 'singlequote')
+            ->assertMethodWiredToAction('mouseenter', '$toggle(\'sortAsc\')')
+            ->assertMethodWiredToAction('mouseenter', '$dispatch(\'post-created\')')
+            ->assertMethodWiredToAction('mouseenter', 'search($event.target.value)')
+            ->assertMethodWiredToAction('mouseenter', '$wire.$refresh()')
+            ->assertMethodWiredToAction('mouseenter', '$parent.removePost({{ $post->id }})')
+            ->assertMethodWiredToAction('mouseenter', '$set(\'query\', \'\')')
+            ;
+    }
+
+    public function it_checks_if_a_generic_livewire_method_is_wired_with_params_to_a_field()
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('mouseenter', 'params');
     }
 
     /** @test * */
