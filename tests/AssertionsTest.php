@@ -65,7 +65,7 @@ class AssertionsTest extends TestCase
             ->assertMethodWiredToAction('custom-event', 'customEventMethod')
             ->assertMethodWiredToAction('change', 'singlequote')
             ->assertMethodWiredToAction('mouseenter', 'submit')
-            // ->assertMethodWiredToAction('mouseenter', 'params')
+            ->assertMethodWiredToAction('mouseenter', 'params')
             ;
     }
 
