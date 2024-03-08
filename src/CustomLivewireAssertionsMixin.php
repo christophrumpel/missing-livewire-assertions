@@ -40,18 +40,6 @@ class CustomLivewireAssertionsMixin
         };
     }
 
-    public function assertMethodWiredToAction(): Closure
-    {
-        return function (string $action, string $property) {
-            PHPUnit::assertDoesNotMatchRegularExpression(
-                '/wire:' . $action . '(\.(live|blur|(lazy|debounce)(\.\d+?(ms|s)|)))*=(?<q>"|\')'.$property.'(\k\'q\')/',
-                $this->html()
-            );
-
-            return $this;
-        };
-    }
-
     /**
      * Assert that the given property is entangled
      */
@@ -123,6 +111,18 @@ class CustomLivewireAssertionsMixin
         return function (string $method) {
             PHPUnit::assertDoesNotMatchRegularExpression(
                 '/wire:click(\.(prevent))?=(?<q>"|\')'.preg_quote($method).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->html()
+            );
+
+            return $this;
+        };
+    }
+
+    public function assertMethodWiredToAction(): Closure
+    {
+        return function (string $methodName, string $action) {
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:' . $methodName . '(\.(prevent))?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
                 $this->html()
             );
 

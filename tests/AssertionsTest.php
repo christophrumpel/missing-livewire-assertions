@@ -9,6 +9,7 @@ use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
+use Tests\Components\LivewireTestComponentD;
 use Tests\View\Components\Button;
 
 class AssertionsTest extends TestCase
@@ -48,6 +49,24 @@ class AssertionsTest extends TestCase
             ->assertPropertyNotWired('lazy-with-duration_not_wired')
             ->assertPropertyNotWired('debounce-with-duration_not_wired')
             ->assertPropertyNotWired('singlequote_not_wired');
+    }
+
+    /** @test * */
+    public function it_checks_if_livewire_is_wired_to_an_action(): void
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('change', 'change')
+            ->assertMethodWiredToAction('keydown', 'keydown')
+            ->assertMethodWiredToAction('keyup', 'keyup')
+            ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
+            ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
+            ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
+            ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
+            ->assertMethodWiredToAction('custom-event', 'customEventMethod')
+            ->assertMethodWiredToAction('change', 'singlequote')
+            ->assertMethodWiredToAction('mouseenter', 'submit')
+            // ->assertMethodWiredToAction('mouseenter', 'params')
+            ;
     }
 
     /** @test * */
