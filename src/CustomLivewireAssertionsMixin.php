@@ -118,6 +118,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given method is wired to a generic method.
+     */
     public function assertMethodWiredToAction(): Closure
     {
         return function (string $methodName, string $action) {
@@ -130,6 +133,9 @@ class CustomLivewireAssertionsMixin
         };
     }
 
+    /**
+     * Assert that the given method is NOT wired to a generic method.
+     */
     public function assertMethodNotWiredToAction(): Closure
     {
         return function (string $methodName, string $action) {
