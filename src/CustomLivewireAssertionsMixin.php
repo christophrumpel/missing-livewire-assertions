@@ -221,7 +221,7 @@ class CustomLivewireAssertionsMixin
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
 
             PHPUnit::assertMatchesRegularExpression(
-                '/@livewire\(\''.$component.'\'|<livewire\:'.$component.'/',
+                '/@livewire\(\s*\''.$component.'\'|<livewire\:'.$component.'/',
                 $componentHaystackView
             );
 
