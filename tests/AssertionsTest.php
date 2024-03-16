@@ -131,7 +131,7 @@ class AssertionsTest extends TestCase
             ->assertMethodWiredToAction('mouseenter', '$wire.$refresh()')
             ->assertMethodWiredToAction('mouseenter', '$parent.removePost({{ $post->id }})')
             ->assertMethodWiredToAction('mouseenter', '$set(\'query\', \'\')')
-            ;
+        ;
     }
 
     /** @test * */
@@ -146,7 +146,7 @@ class AssertionsTest extends TestCase
             ->assertMethodNotWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod_not_wired')
             ->assertMethodNotWiredToAction('transitionend', 'transitionendMethod_not_wired')
             ->assertMethodNotWiredToAction('custom-event', 'customEventMethod_not_wired')
-            ;
+        ;
     }
 
     /** @test * */
