@@ -338,6 +338,7 @@ class AssertionsTest extends TestCase
     public function it_checks_if_it_sees_a_blade_directive(): void
     {
         Livewire::test(LivewireTestComponentC::class)
+            ->assertContainsLivewireComponent(LivewireTestComponentA::class)
             ->assertContainsLivewireComponent(LivewireTestComponentB::class);
     }
 
