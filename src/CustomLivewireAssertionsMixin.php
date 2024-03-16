@@ -119,6 +119,36 @@ class CustomLivewireAssertionsMixin
     }
 
     /**
+     * Assert that the given method is wired to a generic method.
+     */
+    public function assertMethodWiredToAction(): Closure
+    {
+        return function (string $methodName, string $action) {
+            PHPUnit::assertMatchesRegularExpression(
+                '/wire:' . $methodName . '?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->html()
+            );
+
+            return $this;
+        };
+    }
+
+    /**
+     * Assert that the given method is NOT wired to a generic method.
+     */
+    public function assertMethodNotWiredToAction(): Closure
+    {
+        return function (string $methodName, string $action) {
+            PHPUnit::assertDoesNotMatchRegularExpression(
+                '/wire:' . $methodName . '?=(?<q>"|\')'.preg_quote($action).'(\s*\(.+\)\s*)?\s*(\k\'q\')/',
+                $this->html()
+            );
+
+            return $this;
+        };
+    }
+
+    /**
      * Assert that the given method is wired to form
      */
     public function assertMethodWiredToForm(): Closure
