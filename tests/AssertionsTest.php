@@ -9,6 +9,7 @@ use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
+use Tests\Components\LivewireTestComponentD;
 use Tests\View\Components\Button;
 
 class AssertionsTest extends TestCase
@@ -111,6 +112,57 @@ class AssertionsTest extends TestCase
         Livewire::test(LivewireTestComponentA::class)
             ->assertMethodNotWired('params_not_wired')
             ->assertMethodNotWired('preventParams_not_wired');
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_wired_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('change', 'change')
+            ->assertMethodWiredToAction('keydown', 'keydown')
+            ->assertMethodWiredToAction('keyup', 'keyup')
+            ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
+            ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
+            ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
+            ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
+            ->assertMethodWiredToAction('custom-event', 'customEventMethod')
+            ->assertMethodWiredToAction('change', 'singlequote')
+            ->assertMethodWiredToAction('mouseenter', '$toggle(\'sortAsc\')')
+            ->assertMethodWiredToAction('mouseenter', '$dispatch(\'post-created\')')
+            ->assertMethodWiredToAction('mouseenter', 'search($event.target.value)')
+            ->assertMethodWiredToAction('mouseenter', '$wire.$refresh()')
+            ->assertMethodWiredToAction('mouseenter', '$parent.removePost({{ $post->id }})')
+            ->assertMethodWiredToAction('mouseenter', '$set(\'query\', \'\')')
+        ;
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_not_wired_to_a_field(): void
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodNotWiredToAction('change', 'change_not_wired')
+            ->assertMethodNotWiredToAction('keydown', 'keydown_not_wired')
+            ->assertMethodNotWiredToAction('keyup', 'keyup_not_wired')
+            ->assertMethodNotWiredToAction('mouseenter', 'mouseEnter_not_wired')
+            ->assertMethodNotWiredToAction('keydown.enter', 'keyDownEnter_not_wired')
+            ->assertMethodNotWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod_not_wired')
+            ->assertMethodNotWiredToAction('transitionend', 'transitionendMethod_not_wired')
+            ->assertMethodNotWiredToAction('custom-event', 'customEventMethod_not_wired')
+        ;
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_wired_with_params_to_a_field()
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('mouseenter', 'params');
+    }
+
+    /** @test * */
+    public function it_checks_if_a_generic_livewire_method_is_not_wired_with_params_to_a_field()
+    {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodNotWiredToAction('mouseenter', 'params_not_wired');
     }
 
     /** @test * */
@@ -288,6 +340,7 @@ class AssertionsTest extends TestCase
     public function it_checks_if_it_sees_a_blade_directive(): void
     {
         Livewire::test(LivewireTestComponentC::class)
+            ->assertContainsLivewireComponent(LivewireTestComponentA::class)
             ->assertContainsLivewireComponent(LivewireTestComponentB::class);
     }
 
