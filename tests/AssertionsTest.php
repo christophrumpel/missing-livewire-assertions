@@ -1,10 +1,8 @@
 <?php
 
-use Christophrumpel\MissingLivewireAssertions\MissingLivewireAssertionsServiceProvider;
 use \Tests\NonExistantButton;
 use \Tests\NonExistantLivewireTestComponent;
 use Livewire\Livewire;
-use Livewire\LivewireServiceProvider;
 use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
