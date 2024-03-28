@@ -88,25 +88,28 @@ it('checks if Livewire method is not wired with params to a field', function () 
         ->assertMethodNotWired('preventParams_not_wired');
 });
 
-it('checks if a generic Livewire method is wired to a field', function () {
-    Livewire::test(LivewireTestComponentD::class)
-        ->assertMethodWiredToAction('change', 'change')
-        ->assertMethodWiredToAction('keydown', 'keydown')
-        ->assertMethodWiredToAction('keyup', 'keyup')
-        ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
-        ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
-        ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
-        ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
-        ->assertMethodWiredToAction('custom-event', 'customEventMethod')
-        ->assertMethodWiredToAction('change', 'singlequote')
-        ->assertMethodWiredToAction('mouseenter', '$toggle(\'sortAsc\')')
-        ->assertMethodWiredToAction('mouseenter', '$dispatch(\'post-created\')')
-        ->assertMethodWiredToAction('mouseenter', 'search($event.target.value)')
-        ->assertMethodWiredToAction('mouseenter', '$wire.$refresh()')
-        ->assertMethodWiredToAction('mouseenter', '$parent.removePost({{ $post->id }})')
-        ->assertMethodWiredToAction('mouseenter', '$set(\'query\', \'\')')
-    ;
-});
+it(
+    'checks if a generic Livewire method is wired to a field',
+    function () {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodWiredToAction('change', 'change')
+            ->assertMethodWiredToAction('keydown', 'keydown')
+            ->assertMethodWiredToAction('keyup', 'keyup')
+            ->assertMethodWiredToAction('mouseenter', 'mouseEnter')
+            ->assertMethodWiredToAction('keydown.enter', 'keyDownEnter')
+            ->assertMethodWiredToAction('keydown.shift.enter', 'keyDownShiftEnterMethod')
+            ->assertMethodWiredToAction('transitionend', 'transitionendMethod')
+            ->assertMethodWiredToAction('custom-event', 'customEventMethod')
+            ->assertMethodWiredToAction('change', 'singlequote')
+            ->assertMethodWiredToAction('mouseenter', '$toggle(\'sortAsc\')')
+            ->assertMethodWiredToAction('mouseenter', '$dispatch(\'post-created\')')
+            ->assertMethodWiredToAction('mouseenter', 'search($event.target.value)')
+            ->assertMethodWiredToAction('mouseenter', '$wire.$refresh()')
+            ->assertMethodWiredToAction('mouseenter', '$parent.removePost({{ $post->id }})')
+            ->assertMethodWiredToAction('mouseenter', '$set(\'query\', \'\')')
+        ;
+    }
+);
 
 it('checks if a generic Livewire method is not wired to a field', function () {
     Livewire::test(LivewireTestComponentD::class)
@@ -126,10 +129,13 @@ it('checks if a generic Livewire method is wired with params to a field', functi
         ->assertMethodWiredToAction('mouseenter', 'params');
 });
 
-it('checks if a generic Livewire method is not wired with params to a field', function () {
-    Livewire::test(LivewireTestComponentD::class)
-        ->assertMethodNotWiredToAction('mouseenter', 'params_not_wired');
-});
+it(
+    'checks if a generic Livewire method is not wired with params to a field',
+    function () {
+        Livewire::test(LivewireTestComponentD::class)
+            ->assertMethodNotWiredToAction('mouseenter', 'params_not_wired');
+    }
+);
 
 it('checks if Livewire method is wired to a form', function () {
     Livewire::test(LivewireTestComponentA::class)
@@ -167,55 +173,76 @@ it('checks if Livewire method is not wired to a field with an event', function (
         ->assertMethodNotWiredToEvent('changeDebounce_not_wired', 'change');
 });
 
-it('checks if Livewire method is wired with params to a field with an event', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodWiredToEvent('params', 'click')
-        ->assertMethodWiredToEvent('preventParams', 'click')
-        ->assertMethodWiredToEvent('setSelector', 'change');
-});
+it(
+    'checks if Livewire method is wired with params to a field with an event',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEvent('params', 'click')
+            ->assertMethodWiredToEvent('preventParams', 'click')
+            ->assertMethodWiredToEvent('setSelector', 'change');
+    }
+);
 
-it('checks if Livewire method is not wired with params to a field with an event', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodNotWiredToEvent('params_not_wired', 'click')
-        ->assertMethodNotWiredToEvent('preventParams_not_wired', 'click')
-        ->assertMethodNotWiredToEvent('setSelector_not_wired', 'change')
-        ->assertMethodNotWiredToEvent('setSelector', 'click');
-});
+it(
+    'checks if Livewire method is not wired with params to a field with an event',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEvent('params_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('preventParams_not_wired', 'click')
+            ->assertMethodNotWiredToEvent('setSelector_not_wired', 'change')
+            ->assertMethodNotWiredToEvent('setSelector', 'click');
+    }
+);
 
-it('checks if Livewire method is wired to a field with an event without modifications', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodWiredToEventWithoutModifiers('submit', 'click')
-        ->assertMethodWiredToEventWithoutModifiers('singlequote', 'click')
-        ->assertMethodWiredToEventWithoutModifiers('keyup', 'keyup')
-        ->assertMethodWiredToEventWithoutModifiers('keydown-page-down', 'keydown.page-down');
-});
+it(
+    'checks if Livewire method is wired to a field with an event without modifications',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEventWithoutModifiers('submit', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('singlequote', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('keyup', 'keyup')
+            ->assertMethodWiredToEventWithoutModifiers('keydown-page-down', 'keydown.page-down');
+    }
+);
 
-it('checks if Livewire method is not wired to a field with an event without modifiers', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodNotWiredToEventWithoutModifiers('prevent', 'click')
-        ->assertMethodNotWiredToEventWithoutModifiers('prevent_not_wired', 'click')
-        ->assertMethodNotWiredToEventWithoutModifiers('submit_not_wired', 'click')
-        ->assertMethodNotWiredToEventWithoutModifiers('singlequote_not_wired', 'click')
-        ->assertMethodNotWiredToEventWithoutModifiers('keydown-page-down', 'keydown');
-});
+it(
+    'checks if Livewire method is not wired to a field with an event without modifiers',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEventWithoutModifiers('prevent', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('prevent_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('submit_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('singlequote_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('keydown-page-down', 'keydown');
+    }
+);
 
-it('checks if Livewire method is wired with params to a field with an event without modifiers', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodWiredToEventWithoutModifiers('params', 'click')
-        ->assertMethodWiredToEventWithoutModifiers('preventParams', 'click.prevent')
-        ->assertMethodWiredToEventWithoutModifiers('setSelector', 'change');
-});
+it(
+    'checks if Livewire method is wired with params to a field with an event without modifiers',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodWiredToEventWithoutModifiers('params', 'click')
+            ->assertMethodWiredToEventWithoutModifiers('preventParams', 'click.prevent')
+            ->assertMethodWiredToEventWithoutModifiers('setSelector', 'change');
+    }
+);
 
-it('checks if Livewire method is not wired with params to a field with an event without modifiers', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertMethodNotWiredToEventWithoutModifiers('params_not_wired', 'click')
-        ->assertMethodNotWiredToEventWithoutModifiers('preventParams', 'click');
-});
+it(
+    'checks if Livewire method is not wired with params to a field with an event without modifiers',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertMethodNotWiredToEventWithoutModifiers('params_not_wired', 'click')
+            ->assertMethodNotWiredToEventWithoutModifiers('preventParams', 'click');
+    }
+);
 
-it('checks if Livewire component contains another Livewire component by class name', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertContainsLivewireComponent(LivewireTestComponentB::class);
-});
+it(
+    'checks if Livewire component contains another Livewire component by class name',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertContainsLivewireComponent(LivewireTestComponentB::class);
+    }
+);
 
 it(
     'checks if Livewire component does not contain another Livewire component by class name',
@@ -224,15 +251,21 @@ it(
             ->assertDoesNotContainLivewireComponent(NonExistantLivewireTestComponent::class);
 });
 
-it('checks if Livewire component contains another Livewire component by component name', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertContainsLivewireComponent('tests.components.livewire-test-component-b');
-});
+it(
+    'checks if Livewire component contains another Livewire component by component name',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertContainsLivewireComponent('tests.components.livewire-test-component-b');
+    }
+);
 
-it('checks if Livewire component does not contain another livewire component by component name', function () {
-    Livewire::test(LivewireTestComponentA::class)
-        ->assertDoesNotContainLivewireComponent('non-existant-livewire-test-component');
-});
+it(
+    'checks if Livewire component does not contain another livewire component by component name',
+    function () {
+        Livewire::test(LivewireTestComponentA::class)
+            ->assertDoesNotContainLivewireComponent('non-existant-livewire-test-component');
+    }
+);
 
 it('checks if Livewire component contains a Blade component by class name', function () {
     Livewire::test(LivewireTestComponentA::class)
@@ -244,21 +277,24 @@ it(
     function () {
         Livewire::test(LivewireTestComponentA::class)
             ->assertDoesNotContainBladeComponent(NonExistantButton::class);
-});
+    }
+);
 
 it(
     'checks if Livewire component contains a Blade component by component name',
     function () {
         Livewire::test(LivewireTestComponentA::class)
             ->assertContainsBladeComponent('button');
-});
+    }
+);
 
 it(
     'checks if Livewire component does not contain a Blade component by component name',
     function () {
         Livewire::test(LivewireTestComponentA::class)
             ->assertDoesNotContainBladeComponent('non-existant-button');
-});
+    }
+);
 
 it('checks if it sees string before other string', function () {
      Livewire::test(LivewireTestComponentA::class)
