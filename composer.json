@@ -25,7 +25,7 @@
         "brianium/paratest": "^6.2|^7.4",
         "livewire/livewire": "^3.0",
         "orchestra/testbench": "^8.0|^7.4|^9.0",
-        "pestphp/pest-plugin-drift": "^2.6",
+        "pestphp/pest": "^2.34",
         "phpunit/phpunit": "^9.3|^10.5",
         "spatie/laravel-ray": "^1.9"
     },
