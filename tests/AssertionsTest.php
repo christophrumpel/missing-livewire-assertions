@@ -17,6 +17,7 @@ it('checks if Livewire property is wired to a field', function () {
     Livewire::test(LivewireTestComponentA::class)
         ->assertPropertyWired('user')
         ->assertPropertyWired('blur')
+        ->assertPropertyWired('boolean')
         ->assertPropertyWired('defer')
         ->assertPropertyWired('lazy')
         ->assertPropertyWired('live')
@@ -26,10 +27,11 @@ it('checks if Livewire property is wired to a field', function () {
         ->assertPropertyWired('singlequote');
 });
 
-it('checks if Livewire property is not wired toa field', function () {
+it('checks if Livewire property is not wired to a field', function () {
     Livewire::test(LivewireTestComponentA::class)
         ->assertPropertyNotWired('user_not_wired')
         ->assertPropertyNotWired('blur_not_wired')
+        ->assertPropertyNotWired('boolean_not_wired')
         ->assertPropertyNotWired('lazy_not_wired')
         ->assertPropertyNotWired('live_not_wired')
         ->assertPropertyNotWired('defer_not_wired')
