@@ -1,6 +1,7 @@
 <div>
     <input type="text" wire:model="user" />
     <input type="text" wire:model.blur="blur" />
+    <input type="text" wire:model.change="change" />
     <input type="text" wire:model.boolean="boolean" />
     <input type="text" wire:model.lazy="lazy" />
     <input type="text" wire:model.live="live" />
