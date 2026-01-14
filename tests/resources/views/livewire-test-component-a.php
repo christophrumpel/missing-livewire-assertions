@@ -1,16 +1,18 @@
 <div>
     <input type="text" wire:model="user" />
+    <input type="text" wire:model="user.email" />
     <input type="text" wire:model.blur="blur" />
     <input type="text" wire:model.change="change" />
     <input type="text" wire:model.boolean="boolean" />
     <input type="text" wire:model.self="self" />
     <input type="text" wire:model.lazy="lazy" />
     <input type="text" wire:model.live="live" />
-    <input type="text" wire:model.defer="defer" />
-    <input type="text" wire:model.debounce="debounce" />
-    <input type="text" wire:model.lazy.200s="lazy-with-duration" />
-    <input type="text" wire:model.debounce.500ms="debounce-with-duration" />
+    <input type="text" wire:model.live.debounce="debounce" />
+    <input type="text" wire:model.live.debounce.500ms="debounce-with-duration" />
     <input type="text" wire:model='singlequote' />
+    <input type="text" wire:model.deep="deep" />
+    <input type="text" wire:model.fill="fill" />
+    <input type="text" wire:model.number="number" />
     <a href="/test" wire:click.prevent="prevent">test</a>
     <x-button wire:click="submit" />
     <x-button wire:click='singlequote' />

@@ -20,13 +20,14 @@ it('checks if Livewire property is wired to a field', function () {
         ->assertPropertyWired('change')
         ->assertPropertyWired('boolean')
         ->assertPropertyWired('self')
-        ->assertPropertyWired('defer')
         ->assertPropertyWired('lazy')
         ->assertPropertyWired('live')
         ->assertPropertyWired('debounce')
-        ->assertPropertyWired('lazy-with-duration')
         ->assertPropertyWired('debounce-with-duration')
-        ->assertPropertyWired('singlequote');
+        ->assertPropertyWired('singlequote')
+        ->assertPropertyWired('deep')
+        ->assertPropertyWired('fill')
+        ->assertPropertyWired('number');
 });
 
 it('checks if Livewire property is not wired to a field', function () {
@@ -38,11 +39,12 @@ it('checks if Livewire property is not wired to a field', function () {
         ->assertPropertyNotWired('self_not_wired')
         ->assertPropertyNotWired('lazy_not_wired')
         ->assertPropertyNotWired('live_not_wired')
-        ->assertPropertyNotWired('defer_not_wired')
         ->assertPropertyNotWired('debounce_not_wired')
-        ->assertPropertyNotWired('lazy-with-duration_not_wired')
         ->assertPropertyNotWired('debounce-with-duration_not_wired')
-        ->assertPropertyNotWired('singlequote_not_wired');
+        ->assertPropertyNotWired('singlequote_not_wired')
+        ->assertPropertyNotWired('deep_not_wired')
+        ->assertPropertyNotWired('fill_not_wired')
+        ->assertPropertyNotWired('number_not_wired');
 });
 
 it('checks if Livewire property is entangled to a field', function () {
@@ -305,7 +307,7 @@ it(
 
 it('checks if it sees string before other string', function () {
     Livewire::test(LivewireTestComponentA::class)
-       ->assertSeeBefore('First value', 'Second value');
+        ->assertSeeBefore('First value', 'Second value');
 });
 
 it('checks if it does not see string before other string', function () {
