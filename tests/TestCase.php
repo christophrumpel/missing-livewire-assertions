@@ -39,6 +39,7 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
+        $app['config']->set('cache.default', 'array');
 
         /*
         include_once __DIR__.'/../database/migrations/create_missing-livewire-assertions_table.php.stub';
