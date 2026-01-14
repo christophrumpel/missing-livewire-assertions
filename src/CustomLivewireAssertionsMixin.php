@@ -5,7 +5,7 @@ namespace Christophrumpel\MissingLivewireAssertions;
 use Closure;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Livewire\Mechanisms\ComponentRegistry;
+use Livewire\Finder\Finder;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 /**
@@ -245,7 +245,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $component) {
             if (is_subclass_of($component, Component::class)) {
-                $component = app(ComponentRegistry::class)->getName($component);
+                $component = app(Finder::class)->normalizeName($component);
             }
 
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
@@ -266,7 +266,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $component) {
             if (is_subclass_of($component, Component::class)) {
-                $component = app(ComponentRegistry::class)->getName($component);
+                $component = app(Finder::class)->normalizeName($component);
             }
 
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());
