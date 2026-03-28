@@ -4,6 +4,7 @@ use \Tests\NonExistantButton;
 use \Tests\NonExistantLivewireTestComponent;
 use Livewire\Livewire;
 use Tests\Components\FileDownloadComponent;
+use Tests\Components\ConfiguredNamespaceParentComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
@@ -267,6 +268,14 @@ it(
             ->assertContainsLivewireComponent('tests.components.livewire-test-component-b');
     }
 );
+
+it('checks if Livewire component contains another component using configured class namespace', function () {
+    config()->set('livewire.class_namespace', 'Tests\\Components');
+    app()->forgetInstance('livewire.finder');
+
+    Livewire::test(ConfiguredNamespaceParentComponent::class)
+        ->assertContainsLivewireComponent(LivewireTestComponentB::class);
+});
 
 it(
     'checks if Livewire component does not contain another livewire component by component name',
