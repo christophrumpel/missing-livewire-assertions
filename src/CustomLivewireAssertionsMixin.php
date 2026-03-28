@@ -265,7 +265,7 @@ class CustomLivewireAssertionsMixin
     {
         return function (string $component) {
             if (is_subclass_of($component, Component::class)) {
-                $component = app(Finder::class)->normalizeName($component);
+                $component = app('livewire.finder')->normalizeName($component);
             }
 
             $componentHaystackView = file_get_contents($this->lastState->getView()->getPath());

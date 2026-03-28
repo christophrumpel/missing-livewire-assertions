@@ -277,6 +277,14 @@ it('checks if Livewire component contains another component using configured cla
         ->assertContainsLivewireComponent(LivewireTestComponentB::class);
 });
 
+it('checks if Livewire component does not contain another component using configured class namespace', function () {
+    config()->set('livewire.class_namespace', 'Tests\\Components');
+    app()->forgetInstance('livewire.finder');
+
+    Livewire::test(ConfiguredNamespaceParentComponent::class)
+        ->assertDoesNotContainLivewireComponent(LivewireTestComponentA::class);
+});
+
 it(
     'checks if Livewire component does not contain another livewire component by component name',
     function () {
