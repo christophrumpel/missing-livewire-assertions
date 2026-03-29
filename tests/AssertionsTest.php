@@ -3,8 +3,8 @@
 use \Tests\NonExistantButton;
 use \Tests\NonExistantLivewireTestComponent;
 use Livewire\Livewire;
-use Tests\Components\FileDownloadComponent;
 use Tests\Components\ConfiguredNamespaceParentComponent;
+use Tests\Components\FileDownloadComponent;
 use Tests\Components\LivewireTestComponentA;
 use Tests\Components\LivewireTestComponentB;
 use Tests\Components\LivewireTestComponentC;
